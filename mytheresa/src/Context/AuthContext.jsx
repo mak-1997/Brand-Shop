@@ -11,7 +11,7 @@ export const AuthContextProvider = ({ children }) => {
     navigate('/admin')
   }
 
-  const[adminAuth, setAdminAuth] = React.useState(true);
+  const[adminAuth, setAdminAuth] = React.useState(false);
   const[userAuth, setUserAuth] = React.useState(false);
 
   const initState = {

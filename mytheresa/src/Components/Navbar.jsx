@@ -1,5 +1,9 @@
 import React from "react";
-import {HiOutlineShoppingBag} from 'react-icons/fa'
+import { BsHandbag } from "react-icons/bs";
+import { HiSearch } from "react-icons/hi";
+import { Divider } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -10,9 +14,16 @@ import {
   Link,
   Center,
   Image,
+  Grid,
+  GridItem,
+  InputGroup,
+  InputRightElement,
+  Input,
 } from "@chakra-ui/react";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+
   const changeColor = (e) => {
     e.target.style.color = "black";
     e.target.style.cursor = "pointer";
@@ -23,61 +34,102 @@ export const Navbar = () => {
   };
 
   return (
-    <Container
-      border={"1px solid"}
-      height="200"
-      maxW={{ base: "100%", md: "100%", lg: "90%", xl: "90%", "2xl": "60%" }}
-    >
-      <HStack justifyContent={"space-between"} padding="3">
-        <HStack columnGap={"5"}>
-          <Text onMouseOver={changeColor}>WOMEN</Text>
-          <Text onMouseOver={changeColor}>MEN</Text>
-          <Text onMouseOver={changeColor}>KIDS</Text>
-          <Text onMouseOver={changeColor}>LIFE</Text>
+    <Box>
+      <Container
+        height="200"
+        maxW={{ base: "100%", md: "100%", lg: "90%", xl: "90%", "2xl": "60%" }}
+      >
+        <HStack justifyContent={"space-between"} padding="3">
+          <HStack columnGap={"5"} fontSize="sm">
+            <Text onMouseOver={changeColor}>WOMEN</Text>
+            <Text onMouseOver={changeColor}>MEN</Text>
+            <Text onMouseOver={changeColor}>KIDS</Text>
+            <Text onMouseOver={changeColor}>LIFE</Text>
+          </HStack>
+          <HStack columnGap={"5"}>
+            <Text
+              onMouseEnter={changeColor}
+              onMouseLeave={defaultColor}
+              fontSize={"12"}
+              as="b"
+              color={"gray"}
+            >
+              Signup for Newsletter
+            </Text>
+            <Text
+              onMouseEnter={changeColor}
+              onMouseLeave={defaultColor}
+              fontSize={"12"}
+              as="b"
+              color={"gray"}
+            >
+              My account
+            </Text>
+            <Text
+              onMouseEnter={changeColor}
+              onMouseLeave={defaultColor}
+              fontSize={"12"}
+              as="b"
+              color={"gray"}
+            >
+              My wishlist
+            </Text>
+            <Text
+              onMouseEnter={changeColor}
+              onMouseLeave={defaultColor}
+              fontSize={"12"}
+              as="b"
+              color={"gray"}
+            >
+              International | English
+            </Text>
+          </HStack>
         </HStack>
-        <HStack columnGap={"5"}>
-          <Text
-            onMouseEnter={changeColor}
-            onMouseLeave={defaultColor}
-            fontSize={"12"}
-            as="b"
-            color={"gray"}
+
+        <Grid paddingTop={"5"} templateColumns={"repeat(3,1fr)"}>
+          <GridItem
+            colStart={"2"}
+            colEnd="3"
+            onClick={() => {
+              navigate("/");
+            }}
+            onMouseOver={(e) => (e.target.style.cursor = "pointer")}
           >
-            Signup for Newsletter
-          </Text>
-          <Text
-            onMouseEnter={changeColor}
-            onMouseLeave={defaultColor}
-            fontSize={"12"}
-            as="b"
-            color={"gray"}
+            <Center>
+              <Image height={"20"} src={"projectLogo.png"} alt="BRAND SHOP" />
+            </Center>
+          </GridItem>
+          <GridItem
+            display={"flex"}
+            justifyContent="end"
+            alignItems={"center"}
+            gap="5"
           >
-            My account
-          </Text>
-          <Text
-            onMouseEnter={changeColor}
-            onMouseLeave={defaultColor}
-            fontSize={"12"}
-            as="b"
-            color={"gray"}
-          >
-            My wishlist
-          </Text>
-          <Text
-            onMouseEnter={changeColor}
-            onMouseLeave={defaultColor}
-            fontSize={"12"}
-            as="b"
-            color={"gray"}
-          >
-            International | English
-          </Text>
+            <Text>SHOPPING BAG </Text>
+            <BsHandbag size={"25"} />
+          </GridItem>
+        </Grid>
+
+        <HStack justifyContent={"space-between"}>
+          <HStack color={"gray"} gap={"3"} fontSize="sm">
+            <Text>NEW ARRIVALS</Text>
+            <Text>DESIGNERS</Text>
+            <Text>CLOTHING</Text>
+            <Text>SHOES</Text>
+            <Text>BAGS</Text>
+            <Text>ACCESSORIES</Text>
+            <Text>FESTIVE SEASON</Text>
+            <Text color={"tomato"}>SALE</Text>
+          </HStack>
+          <Box>
+            <InputGroup size={"sm"}>
+              <Input placeholder="Search for..." />
+              <InputRightElement children={<HiSearch />} />
+            </InputGroup>
+          </Box>
         </HStack>
-      </HStack>
-      <Center paddingTop={'7'} border="1px solid" >
-        <Image height={"20"} src={"projectLogo.png"} alt="BRAND SHOP" />
-        {/* <HiOutlineShoppingBag /> */}
-      </Center>
-    </Container>
+      </Container>
+      <Divider orientation="horizontal" borderColor="gray.300" marginTop="-3" />
+    </Box>
   );
 };

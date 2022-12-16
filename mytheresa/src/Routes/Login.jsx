@@ -42,16 +42,23 @@ export const Login = () => {
   };
 
   return (
-    <Box >
+    <Box>
       <Center>
-        <Text fontSize={"4xl"} as="b" padding={3} >
+        <Text fontSize={"4xl"} as="b" padding={3}>
           Login
         </Text>
       </Center>
       <hr />
-      <Stack direction={{ base: "column",md:"row", lg: "row" }} justifyContent={{base:"center",md:"center",lg:"space-around"}}  >
+      <Stack
+        direction={{ base: "column", md: "row", lg: "row" }}
+        justifyContent={{ base: "center", md: "center", lg: "space-around" }}
+      >
         {/* User Form*/}
-        <VStack  width={{base : "100%",md:"70%", lg:"40%"}} padding="5" rowGap={5} >
+        <VStack
+          width={{ base: "100%", md: "70%", lg: "40%" }}
+          padding="5"
+          rowGap={5}
+        >
           <Text fontSize={"xl"} as="b">
             User Login
           </Text>
@@ -75,14 +82,22 @@ export const Login = () => {
               onChange={(event) => handleUserChange(event)}
             />
           </FormControl>
-          <Button onClick={(event) => handleUserSubmit(event, userData)} bg="black" color={"white"} >
+          <Button
+            onClick={(event) => handleUserSubmit(event, userData)}
+            bg="black"
+            color={"white"}
+          >
             Login
           </Button>
         </VStack>
 
         {/* Admin Form */}
 
-        <VStack  width={{base : "100%",md : "70%", lg:"40%"}} padding="5" rowGap={5} >
+        <VStack
+          width={{ base: "100%", md: "70%", lg: "40%" }}
+          padding="5"
+          rowGap={5}
+        >
           <Text fontSize={"xl"} as="b">
             Admin Login
           </Text>
@@ -106,7 +121,11 @@ export const Login = () => {
               onChange={(event) => handleAdminChange(event)}
             />
           </FormControl>
-          <Button onClick={(event) => handleAdminSubmit(event, adminData)} bg="black" color={"white"} >
+          <Button
+            onClick={(event) => handleAdminSubmit(event, adminData)}
+            bg="black"
+            color={"white"}
+          >
             Login
           </Button>
         </VStack>
