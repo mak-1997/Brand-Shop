@@ -1,5 +1,6 @@
 import {AllRoutes} from './Routes/AllRoutes';
 import {Navbar} from './Components/Navbar';
+import {Footer} from './Components/Footer';
 import './App.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <AllRoutes />
+      <Footer/>
     </div>
   );
 }
