@@ -1,9 +1,19 @@
 import React from "react";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 
 export const AuthContext = React.createContext();
 
 export const AuthContextProvider = ({ children }) => {
+
+  const navigate = useNavigate();
+  const navigateToAdmin = ()=>{
+    navigate('/admin')
+  }
+
+  const[adminAuth, setAdminAuth] = React.useState(true);
+  const[userAuth, setUserAuth] = React.useState(false);
+
   const initState = {
     email: "",
     password: "",
@@ -22,6 +32,8 @@ export const AuthContextProvider = ({ children }) => {
           password: userData.password,
         },
       });
+      setUserAuth(true);
+      
       console.log(res);
       return res;
     } catch (error) {
@@ -39,6 +51,8 @@ export const AuthContextProvider = ({ children }) => {
           password: adminData.password,
         },
       });
+      setAdminAuth(true);
+      navigateToAdmin();
       console.log(res);
       return res;
     } catch (error) {
@@ -54,6 +68,8 @@ export const AuthContextProvider = ({ children }) => {
         adminData,
         setAdminData,
         adminLogin,
+        adminAuth,
+        userAuth
       }}
     >
       {children}
