@@ -15,21 +15,43 @@ import React from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export const HomePage = () => {
+ 
+  
   const [newArrivals, setNewArrivals] = React.useState([]);
   const [clothing, setClothing] = React.useState([]);
   const [shoes, setShoes] = React.useState([]);
 
-  const box = document.querySelector(".carousel");
-  const nextBtn = () => {
+  const scrollRight1 = () =>{
+    const box = document.querySelector(".carousel1");
     const width = box.clientWidth;
-    box.scrollRight = box.scrollRight + width;
-    console.log(box.scrollRight);
-  };
-  const prevBtn = () => {
+    box.scrollLeft += width;
+  }
+  const scrollLeft1 = () =>{
+    const box = document.querySelector(".carousel1");
     const width = box.clientWidth;
-    box.scrollLeft = box.scrollLeft - width;
-    console.log(width);
-  };
+    box.scrollLeft -= width;
+  }
+  const scrollRight2 = () =>{
+    const box = document.querySelector(".carousel2");
+    const width = box.clientWidth;
+    box.scrollLeft += width;
+  }
+  const scrollLeft2 = () =>{
+    const box = document.querySelector(".carousel2");
+    const width = box.clientWidth;
+    box.scrollLeft -= width;
+  }
+  const scrollRight3 = () =>{
+    const box = document.querySelector(".carousel3");
+    const width = box.clientWidth;
+    box.scrollLeft += width;
+  }
+  const scrollLeft3 = () =>{
+    const box = document.querySelector(".carousel3");
+    const width = box.clientWidth;
+    box.scrollLeft -= width;
+  }
+ 
 
   const newArrivalsData = async () => {
     const res = await axios({
@@ -90,15 +112,15 @@ export const HomePage = () => {
             variant={"ghost"}
             marginRight={"2"}
             marginBottom="50"
-            onClick={() => prevBtn()}
+            onClick={() => scrollLeft1()}
           >
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
             maxW={"82%"}
             gap="5"
-            overflowX={"hidden"}
-            className="carousel"
+            overflowX={"scroll"}
+            className="carousel1"
           >
             {newArrivals.map((elem) => {
               return (
@@ -114,7 +136,7 @@ export const HomePage = () => {
             variant={"ghost"}
             marginLeft={"2"}
             marginBottom="50"
-            onClick={() => nextBtn()}
+            onClick={() => scrollRight1()}
           >
             <AiOutlineRight size={"40"} />
           </Button>
@@ -157,15 +179,15 @@ export const HomePage = () => {
             variant={"ghost"}
             marginRight={"2"}
             marginBottom="50"
-            onClick={() => prevBtn()}
+            onClick={() => scrollLeft2()}
           >
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
             maxW={"82%"}
             gap="5"
-            overflowX={"hidden"}
-            className="carousel"
+            overflowX={"scroll"}
+            className="carousel2"
           >
             {shoes.map((elem) => {
               return (
@@ -181,7 +203,7 @@ export const HomePage = () => {
             variant={"ghost"}
             marginLeft={"2"}
             marginBottom="50"
-            onClick={() => nextBtn()}
+            onClick={() => scrollRight2()}
           >
             <AiOutlineRight size={"40"} />
           </Button>
@@ -224,15 +246,15 @@ export const HomePage = () => {
             variant={"ghost"}
             marginRight={"2"}
             marginBottom="50"
-            onClick={() => prevBtn()}
+            onClick={() => scrollLeft3()}
           >
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
             maxW={"82%"}
             gap="5"
-            overflowX={"hidden"}
-            className="carousel"
+            overflowX={"scroll"}
+            className="carousel3"
           >
             {clothing.map((elem) => {
               return (
@@ -248,7 +270,7 @@ export const HomePage = () => {
             variant={"ghost"}
             marginLeft={"2"}
             marginBottom="50"
-            onClick={() => nextBtn()}
+            onClick={() => scrollRight3()}
           >
             <AiOutlineRight size={"40"} />
           </Button>
