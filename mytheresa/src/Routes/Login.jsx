@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormControl,
   Button,
+  Divider
 } from "@chakra-ui/react";
 import React from "react";
 import { AuthContext } from "../Context/AuthContext";
@@ -92,6 +93,7 @@ export const Login = () => {
         </VStack>
 
         {/* Admin Form */}
+       
 
         <VStack
           width={{ base: "100%", md: "70%", lg: "40%" }}

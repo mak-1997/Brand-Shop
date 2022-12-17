@@ -2,8 +2,8 @@ import React from "react";
 import { BsHandbag } from "react-icons/bs";
 import { HiSearch } from "react-icons/hi";
 import { Divider } from "@chakra-ui/react";
-import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
+import { useNavigate,NavLink,Navigate } from "react-router-dom";
 
 import {
   Box,
@@ -62,6 +62,7 @@ export const Navbar = () => {
               fontSize={"12"}
               as="b"
               color={"gray"}
+              
             >
               My account
             </Text>
@@ -112,10 +113,10 @@ export const Navbar = () => {
 
         <HStack justifyContent={"space-between"}>
           <HStack color={"gray"} gap={"3"} fontSize="sm">
-            <Text>NEW ARRIVALS</Text>
+            <NavLink to={'/newArrivals'} >NEW ARRIVALS</NavLink>
             <Text>DESIGNERS</Text>
-            <Text>CLOTHING</Text>
-            <Text>SHOES</Text>
+            <NavLink to='/clothing' >CLOTHING</NavLink>
+            <NavLink to='/shoes' >SHOES</NavLink>
             <Text>BAGS</Text>
             <Text>ACCESSORIES</Text>
             <Text>FESTIVE SEASON</Text>
