@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import React from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import {newArrivalsData,shoesData,clothingData} from './api';
 
 export const HomePage = () => {
  
@@ -53,49 +54,18 @@ export const HomePage = () => {
   }
  
 
-  const newArrivalsData = async () => {
-    const res = await axios({
-      method: "get",
-      baseURL: `https://mytheresa-server.onrender.com/newArrivals/`,
-      url: `?_limit=20`,
-    });
-    console.log(res);
-    setNewArrivals(res.data);
-    return res;
-  };
 
-  const shoesData = async () => {
-    const res = await axios({
-      method: "get",
-      baseURL: `https://mytheresa-server.onrender.com/shoes/`,
-      url: `?_limit=20`,
-    });
-    console.log(res);
-    setShoes(res.data);
-    return res;
-  };
-
-  const clothingData = async () => {
-    const res = await axios({
-      method: "get",
-      baseURL: `https://mytheresa-server.onrender.com/clothing/`,
-      url: `?_limit=20`,
-    });
-    console.log(res);
-    setClothing(res.data);
-    return res;
-  };
 
   React.useEffect(() => {
-    newArrivalsData();
-    clothingData();
-    shoesData();
+    newArrivalsData(setNewArrivals);
+    clothingData(setShoes);
+    shoesData(setClothing);
   }, []);
 
   return (
     <Box>
       <Link to="/login"> Login </Link>
-      <Link to="/admin">Admin</Link>
+      {/* <Link to="/admin">Admin</Link> */}
 
       <Container maxWidth={"90%"} marginBottom="5">
         <Image
@@ -107,7 +77,7 @@ export const HomePage = () => {
       <Text fontSize={"4xl"}>New Arrivals</Text>
 
       <Box margin={5}>
-        <Center>
+        <Center  >
           <Button
             variant={"ghost"}
             marginRight={"2"}
@@ -117,9 +87,12 @@ export const HomePage = () => {
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
+         
             maxW={"82%"}
-            gap="5"
+            gap="3"
             overflowX={"scroll"}
+            overflow="hidden"
+            scrollBehavior={'smooth'}
             className="carousel1"
           >
             {newArrivals.map((elem) => {
@@ -184,9 +157,11 @@ export const HomePage = () => {
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
-            maxW={"82%"}
+            maxW={"85%"}
             gap="5"
             overflowX={"scroll"}
+            overflow="hidden"
+            scrollBehavior={'smooth'}
             className="carousel2"
           >
             {shoes.map((elem) => {
@@ -254,6 +229,8 @@ export const HomePage = () => {
             maxW={"82%"}
             gap="5"
             overflowX={"scroll"}
+            overflow="hidden"
+            scrollBehavior={'smooth'}
             className="carousel3"
           >
             {clothing.map((elem) => {

@@ -3,6 +3,7 @@ import { Login } from "./Login";
 import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage";
 import { PrivateRoute } from "./PrivateRoute";
+import {NewArrivals} from './NewArrivals';
 export const AllRoutes = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ export const AllRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route path='/newArrivals' element={<NewArrivals />} />
       </Routes>
     </div>
   );
