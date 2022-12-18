@@ -14,13 +14,16 @@ import {
   Stack,
   Checkbox,
 } from "@chakra-ui/react";
-import { newArrivalsData, addToCart, removeFromCart, setQuantityOfNewArrivals } from "./api";
+import { clothingData, addToCart, removeFromCart, setQuantityOfClothing } from "./api";
 import { Pagination } from "../Components/Pagination";
 import {AuthContext} from '../Context/AuthContext';
-export const NewArrivals = () => {
+
+
+
+export const Clothing = () => {
 
   const {totalItems, setTotalItems} = React.useContext(AuthContext);
-  const [newArrived, setNewArrived] = React.useState([]);
+  const [clothing, setClothing] = React.useState([]);
   const [page, setPage] = React.useState(1);
   const [sortPara,setSortPara] = React.useState('discountPercentage');
   const [orderPara, setOrderPara] = React.useState('asc');
@@ -28,34 +31,34 @@ export const NewArrivals = () => {
 
   const handleAddToCart = async (elem) => {
     elem.quantity = elem.quantity === 0 ? 1 : elem.quantity;
-    await setQuantityOfNewArrivals(elem);
+    await setQuantityOfClothing(elem);
     await addToCart(elem);
     setTotalItems(totalItems + 1);
   };
 
   const handleRemoveFromCart = async (elem) => {
     elem.quantity = 0;
-    await setQuantityOfNewArrivals(elem);
+    await setQuantityOfClothing(elem);
     await removeFromCart(elem);
     setTotalItems(totalItems - 1);
   };
 
   const handleIncrement = async (elem) => {
     elem.quantity++;
-    await setQuantityOfNewArrivals(elem);
+    await setQuantityOfClothing(elem);
 
     setTotalItems(totalItems + 1);
   };
 
   const handleDecrement = async (elem) => {
     elem.quantity--;
-    await setQuantityOfNewArrivals(elem);
+    await setQuantityOfClothing(elem);
 
     setTotalItems(totalItems - 1);
   };
 
   React.useEffect(() => {
-    newArrivalsData(setNewArrived, page,sortPara,orderPara);
+    clothingData(setClothing, page,sortPara,orderPara);
   }, [page, totalItems,sortPara,orderPara]);
   return (
     <Box justifyContent={"center"}  >
@@ -146,7 +149,7 @@ export const NewArrivals = () => {
           </Stack>
         </Box>
         <Grid templateColumns={"repeat(3,1fr)"} gap="5" rowGap="85" padding={5}>
-          {newArrived.map((elem) => {
+          {clothing.map((elem) => {
             return (
               <VStack
                 key={elem.id}

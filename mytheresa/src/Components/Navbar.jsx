@@ -120,8 +120,8 @@ export const Navbar = () => {
           <HStack color={"gray"} gap={"3"} fontSize="sm">
             <NavLink to={"/newArrivals"}>NEW ARRIVALS</NavLink>
             <Text>DESIGNERS</Text>
-            <NavLink to="/clothing">CLOTHING</NavLink>
-            <NavLink to="/shoes">SHOES</NavLink>
+            <NavLink to={"/clothing"}>CLOTHING</NavLink>
+            <NavLink to={"/shoes"}>SHOES</NavLink>
             <Text>BAGS</Text>
             <Text>ACCESSORIES</Text>
             <Text>FESTIVE SEASON</Text>

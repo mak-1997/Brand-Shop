@@ -4,6 +4,8 @@ import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage";
 import { PrivateRoute } from "./PrivateRoute";
 import {NewArrivals} from './NewArrivals';
+import {Shoes} from './Shoes';
+import {Clothing} from './Clothing';
 export const AllRoutes = () => {
   return (
     <div>
@@ -19,6 +21,8 @@ export const AllRoutes = () => {
           }
         />
         <Route path='/newArrivals' element={<NewArrivals />} />
+        <Route path='/shoes' element={<Shoes />} />
+        <Route path='/clothing' element={<Clothing />} />
       </Routes>
     </div>
   );
