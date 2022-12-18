@@ -110,6 +110,7 @@ export const Navbar = () => {
             justifyContent="end"
             alignItems={"center"}
             gap="5"
+            onClick={()=> navigate('/cart')}
           >
             <Text as="b"> Total Items : {totalItems}</Text>
             <BsHandbag size={"25"} />
@@ -128,7 +129,7 @@ export const Navbar = () => {
             <Text color={"tomato"}>SALE</Text>
           </HStack>
           <Box>
-            <InputGroup size={"sm"}>
+            <InputGroup size={"sm"}  >
               <Input placeholder="Search for..." />
               <InputRightElement children={<HiSearch />} />
             </InputGroup>

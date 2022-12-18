@@ -6,6 +6,8 @@ import { PrivateRoute } from "./PrivateRoute";
 import {NewArrivals} from './NewArrivals';
 import {Shoes} from './Shoes';
 import {Clothing} from './Clothing';
+import {Cart} from './Cart';
+
 export const AllRoutes = () => {
   return (
     <div>
@@ -23,6 +25,7 @@ export const AllRoutes = () => {
         <Route path='/newArrivals' element={<NewArrivals />} />
         <Route path='/shoes' element={<Shoes />} />
         <Route path='/clothing' element={<Clothing />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </div>
   );

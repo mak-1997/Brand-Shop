@@ -8,53 +8,50 @@ import {
   Center,
   HStack,
   Button,
-  Divider
+  Divider,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import {newArrivalsData,shoesData,clothingData} from './api';
+import { newArrivalsData, shoesData, clothingData } from "./api";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
- 
-  
+  const navigate = useNavigate();
   const [newArrivals, setNewArrivals] = React.useState([]);
   const [clothing, setClothing] = React.useState([]);
   const [shoes, setShoes] = React.useState([]);
 
-  const scrollRight1 = () =>{
+  const scrollRight1 = () => {
     const box = document.querySelector(".carousel1");
     const width = box.clientWidth;
     box.scrollLeft += width;
-  }
-  const scrollLeft1 = () =>{
+  };
+  const scrollLeft1 = () => {
     const box = document.querySelector(".carousel1");
     const width = box.clientWidth;
     box.scrollLeft -= width;
-  }
-  const scrollRight2 = () =>{
+  };
+  const scrollRight2 = () => {
     const box = document.querySelector(".carousel2");
     const width = box.clientWidth;
     box.scrollLeft += width;
-  }
-  const scrollLeft2 = () =>{
+  };
+  const scrollLeft2 = () => {
     const box = document.querySelector(".carousel2");
     const width = box.clientWidth;
     box.scrollLeft -= width;
-  }
-  const scrollRight3 = () =>{
+  };
+  const scrollRight3 = () => {
     const box = document.querySelector(".carousel3");
     const width = box.clientWidth;
     box.scrollLeft += width;
-  }
-  const scrollLeft3 = () =>{
+  };
+  const scrollLeft3 = () => {
     const box = document.querySelector(".carousel3");
     const width = box.clientWidth;
     box.scrollLeft -= width;
-  }
- 
-
-
+  };
 
   React.useEffect(() => {
     newArrivalsData(setNewArrivals);
@@ -64,20 +61,19 @@ export const HomePage = () => {
 
   return (
     <Box>
-      <Link to="/login"> Login </Link>
-      {/* <Link to="/admin">Admin</Link> */}
-
       <Container maxWidth={"90%"} marginBottom="5">
-        <Image
-          src="https://img.mytheresa.com/media/static/raw/cms/l/MW_HP_2022_CW50/BIG1_NEW/DESKTOP_2X_20221213142316.jpg?imwidth=1180&imdensity=1"
-          alt="Banner Image"
-        />
+        <Center>
+          <Image
+            src="https://img.mytheresa.com/media/static/raw/cms/l/MW_HP_2022_CW50/BIG1_NEW/DESKTOP_2X_20221213142316.jpg?imwidth=1180&imdensity=1"
+            alt="Banner Image"
+          />
+        </Center>
       </Container>
 
       <Text fontSize={"4xl"}>New Arrivals</Text>
 
       <Box margin={5}>
-        <Center  >
+        <Center>
           <Button
             variant={"ghost"}
             marginRight={"2"}
@@ -87,12 +83,11 @@ export const HomePage = () => {
             <AiOutlineLeft size={"40"} />
           </Button>
           <HStack
-         
             maxW={"82%"}
             gap="3"
             overflowX={"scroll"}
             overflow="hidden"
-            scrollBehavior={'smooth'}
+            scrollBehavior={"smooth"}
             className="carousel1"
           >
             {newArrivals.map((elem) => {
@@ -100,7 +95,7 @@ export const HomePage = () => {
                 <Box key={elem.id} minW="250px">
                   <Image src={elem.image} alt={elem.description} />
                   <Text>{elem.brand}</Text>
-                  <Text>{elem.price}</Text>
+                  <Text as="b">Price : {elem.price}</Text>
                 </Box>
               );
             })}
@@ -116,7 +111,12 @@ export const HomePage = () => {
         </Center>
       </Box>
 
-      <Button bg={"black"} color="white" borderRadius={"0"}>
+      <Button
+        onClick={() => navigate("/newArrivals")}
+        bg={"black"}
+        color="white"
+        borderRadius={"0"}
+      >
         View All
       </Button>
 
@@ -161,7 +161,7 @@ export const HomePage = () => {
             gap="5"
             overflowX={"scroll"}
             overflow="hidden"
-            scrollBehavior={'smooth'}
+            scrollBehavior={"smooth"}
             className="carousel2"
           >
             {shoes.map((elem) => {
@@ -169,7 +169,7 @@ export const HomePage = () => {
                 <Box key={elem.id} minW="250px">
                   <Image src={elem.image} alt={elem.description} />
                   <Text>{elem.brand}</Text>
-                  <Text>{elem.price}</Text>
+                  <Text as="b">Price : {elem.price}</Text>
                 </Box>
               );
             })}
@@ -185,7 +185,12 @@ export const HomePage = () => {
         </Center>
       </Box>
 
-      <Button bg={"black"} color="white" borderRadius={"0"}>
+      <Button
+        onClick={() => navigate("/clothing")}
+        bg={"black"}
+        color="white"
+        borderRadius={"0"}
+      >
         View All
       </Button>
 
@@ -230,7 +235,7 @@ export const HomePage = () => {
             gap="5"
             overflowX={"scroll"}
             overflow="hidden"
-            scrollBehavior={'smooth'}
+            scrollBehavior={"smooth"}
             className="carousel3"
           >
             {clothing.map((elem) => {
@@ -238,7 +243,7 @@ export const HomePage = () => {
                 <Box key={elem.id} minW="250px">
                   <Image src={elem.image} alt={elem.description} />
                   <Text>{elem.brand}</Text>
-                  <Text>{elem.price}</Text>
+                  <Text as="b">Price : {elem.price}</Text>
                 </Box>
               );
             })}
@@ -254,12 +259,17 @@ export const HomePage = () => {
         </Center>
       </Box>
 
-      <Button bg={"black"} color="white" borderRadius={"0"}>
+      <Button
+        onClick={() => navigate("/shoes")}
+        bg={"black"}
+        color="white"
+        borderRadius={"0"}
+      >
         View All
       </Button>
 
       <Center>
-      <Divider width={'80%'} borderColor='gray.300' margin={'5'} />
+        <Divider width={"90%"} borderColor="gray.300" margin={"5"} />
       </Center>
     </Box>
   );
