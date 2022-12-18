@@ -9,16 +9,48 @@ import {
   Button,
   VStack,
   Input,
+  HStack
 } from "@chakra-ui/react";
-import { newArrivalsData, NewArrivalsData } from "./api";
+import { newArrivalsData, NewArrivalsData,addToCart,removeFromCart,setQuantity } from "./api";
 
 export const NewArrivals = () => {
+  
   const [newArrived, setNewArrived] = React.useState([]);
   const [page, setPage] = React.useState(1);
+  const [totalItems, setTotalItems] = React.useState(0);
+  
+  const handleAddToCart = async(elem) =>{
+    elem.quantity = 1;
+    await setQuantity(elem);
+    await addToCart(elem);
+    setTotalItems(totalItems + 1)
+  }
+  
+  const handleRemoveFromCart = async (elem) =>{
+    elem.quantity = 0;
+    await setQuantity(elem);
+    await removeFromCart(elem);
+    setTotalItems(totalItems - 1)
+  }
+
+  const handleIncrement = async (elem) =>{
+    elem.quantity++;
+    await setQuantity(elem);
+    
+    setTotalItems(totalItems + 1)
+  }
+
+  const handleDecrement = async (elem) =>{
+    elem.quantity--;
+    await setQuantity(elem);
+    
+    setTotalItems(totalItems - 1)
+  }
+  
 
   React.useEffect(() => {
     newArrivalsData(setNewArrived);
-  }, [page]);
+  }, [page,totalItems]);
   return (
     <Box justifyContent={"center"}>
       <Text>Pagination Component</Text>
@@ -92,7 +124,7 @@ export const NewArrivals = () => {
                 maxW="250px"
                 boxShadow={"md"}
                 paddingBottom="4"
-                onMouseOver={"scale(1.25)"}
+                
               >
                 <Image src={elem.image} alt={elem.description} />
                 <Text marginTop="2">{elem.brand}</Text>
@@ -105,7 +137,14 @@ export const NewArrivals = () => {
                   {elem.description}{" "}
                 </Text>
                 <Text as="b"> {elem.price} </Text>
-                <Button>Add To Cart</Button>
+                <HStack>
+                  <Button onClick={()=>handleDecrement(elem)} >-</Button>
+                    <Text>{elem.quantity}</Text>
+                  <Button onClick={()=>handleIncrement(elem)} >+</Button>
+                </HStack>
+                <Button onClick={()=>handleAddToCart(elem)} >Add To Cart</Button>
+                <Button onClick={()=>handleRemoveFromCart(elem)} >Remove From Cart</Button>
+              
               </VStack>
             );
           })}
