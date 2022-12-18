@@ -13,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const[adminAuth, setAdminAuth] = React.useState(false);
   const[userAuth, setUserAuth] = React.useState(false);
+  const [totalItems, setTotalItems] = React.useState(0);
 
   const initState = {
     email: "",
@@ -69,7 +70,9 @@ export const AuthContextProvider = ({ children }) => {
         setAdminData,
         adminLogin,
         adminAuth,
-        userAuth
+        userAuth,
+        totalItems,
+        setTotalItems
       }}
     >
       {children}
