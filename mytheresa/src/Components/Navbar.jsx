@@ -2,8 +2,9 @@ import React from "react";
 import { BsHandbag } from "react-icons/bs";
 import { HiSearch } from "react-icons/hi";
 import { Divider } from "@chakra-ui/react";
+import { AuthContext } from "../Context/AuthContext";
 
-import { useNavigate,NavLink,Navigate } from "react-router-dom";
+import { useNavigate, NavLink, Navigate } from "react-router-dom";
 
 import {
   Box,
@@ -20,8 +21,12 @@ import {
   InputRightElement,
   Input,
 } from "@chakra-ui/react";
+import { getCartItems } from "../Routes/api";
 
 export const Navbar = () => {
+
+  const {totalItems, setTotalItems} = React.useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const changeColor = (e) => {
@@ -62,7 +67,7 @@ export const Navbar = () => {
               fontSize={"12"}
               as="b"
               color={"gray"}
-              
+              onClick={()=>navigate('/login')}
             >
               My account
             </Text>
@@ -106,17 +111,17 @@ export const Navbar = () => {
             alignItems={"center"}
             gap="5"
           >
-            <Text>SHOPPING BAG </Text>
+            <Text as="b"> Total Items : {totalItems}</Text>
             <BsHandbag size={"25"} />
           </GridItem>
         </Grid>
 
         <HStack justifyContent={"space-between"}>
           <HStack color={"gray"} gap={"3"} fontSize="sm">
-            <NavLink to={'/newArrivals'} >NEW ARRIVALS</NavLink>
+            <NavLink to={"/newArrivals"}>NEW ARRIVALS</NavLink>
             <Text>DESIGNERS</Text>
-            <NavLink to='/clothing' >CLOTHING</NavLink>
-            <NavLink to='/shoes' >SHOES</NavLink>
+            <NavLink to="/clothing">CLOTHING</NavLink>
+            <NavLink to="/shoes">SHOES</NavLink>
             <Text>BAGS</Text>
             <Text>ACCESSORIES</Text>
             <Text>FESTIVE SEASON</Text>

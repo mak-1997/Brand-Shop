@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const newArrivalsData = async (setNewArrivals) => {
+export const newArrivalsData = async (setNewArrivals,page) => {
   const res = await axios({
     method: "get",
     baseURL: `https://mytheresa-server.onrender.com/newArrivals/`,
-    url: `?_limit=20`,
+    url: `?_limit=20&_page=${page}`,
   });
   console.log(res);
   setNewArrivals(res.data);
@@ -63,4 +63,13 @@ export const setQuantity= async (elem)=>{
     }
   });
   console.log(res);
+}
+
+export const getCartItems = async (setCartItems) =>{
+  const res = await axios({
+    method : 'get',
+    url : `https://mytheresa-server.onrender.com/cart`,
+  })
+  setCartItems(res.data);
+  return res;
 }

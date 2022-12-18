@@ -9,114 +9,134 @@ import {
   Button,
   VStack,
   Input,
-  HStack
+  HStack,
+  Select,
+  Stack,
+  Checkbox,
 } from "@chakra-ui/react";
-import { newArrivalsData, NewArrivalsData,addToCart,removeFromCart,setQuantity } from "./api";
-
+import { newArrivalsData, addToCart, removeFromCart, setQuantity } from "./api";
+import { Pagination } from "../Components/Pagination";
+import {AuthContext} from '../Context/AuthContext';
 export const NewArrivals = () => {
-  
+
+  const {totalItems, setTotalItems} = React.useContext(AuthContext);
   const [newArrived, setNewArrived] = React.useState([]);
   const [page, setPage] = React.useState(1);
-  const [totalItems, setTotalItems] = React.useState(0);
-  
-  const handleAddToCart = async(elem) =>{
-    elem.quantity = 1;
+
+
+  const handleAddToCart = async (elem) => {
+    elem.quantity = elem.quantity === 0 ? 1 : elem.quantity;
     await setQuantity(elem);
     await addToCart(elem);
-    setTotalItems(totalItems + 1)
-  }
-  
-  const handleRemoveFromCart = async (elem) =>{
+    setTotalItems(totalItems + 1);
+  };
+
+  const handleRemoveFromCart = async (elem) => {
     elem.quantity = 0;
     await setQuantity(elem);
     await removeFromCart(elem);
-    setTotalItems(totalItems - 1)
-  }
+    setTotalItems(totalItems - 1);
+  };
 
-  const handleIncrement = async (elem) =>{
+  const handleIncrement = async (elem) => {
     elem.quantity++;
     await setQuantity(elem);
-    
-    setTotalItems(totalItems + 1)
-  }
 
-  const handleDecrement = async (elem) =>{
+    setTotalItems(totalItems + 1);
+  };
+
+  const handleDecrement = async (elem) => {
     elem.quantity--;
     await setQuantity(elem);
-    
-    setTotalItems(totalItems - 1)
-  }
-  
+
+    setTotalItems(totalItems - 1);
+  };
 
   React.useEffect(() => {
-    newArrivalsData(setNewArrived);
-  }, [page,totalItems]);
+    newArrivalsData(setNewArrived, page);
+  }, [page, totalItems]);
   return (
-    <Box justifyContent={"center"}>
-      <Text>Pagination Component</Text>
+    <Box justifyContent={"center"}  >
+      <Box display='flex' maxW='90%' margin='auto' justifyContent={'right'} >
+      <Select maxW={'200'}  margin='3' >
+        <option value="">Sort By</option>
+        <option value="">Price high to low</option>
+        <option value="">Price low to high</option>
+        <option value="">Alphabetical order</option>
+      </Select>
+      <Pagination setPage={setPage} page={page} />
+      </Box>
       <Divider
         borderColor={"gray.300"}
         maxW="90%"
         margin={"auto"}
         marginBottom="5"
       />
-      <Container maxW={"90%"} display="flex" border={"1px solid"} gap={"5"}>
-        <Box width={"30%"} border="1px solid">
-          <VStack>
-            <Text>NEW ARRIVALS</Text>
-            <Text as="b">Current Week</Text>
-            <Text>Previouse Weeks</Text>
-            <Text>Essentials</Text>
-            <Text>Tailoring Edit</Text>
-            <Text>Loungewear</Text>
-            <Text>Outdoor & Activewear</Text>
-            <Text>Cold Weather Edit</Text>
-            <Text>The Ski Edit</Text>
-          </VStack>
-          <VStack>
-            <Text>Accessories</Text>
-            <Text>Bags</Text>
-            <Text>Clothing</Text>
-            <Text>Shoes</Text>
-          </VStack>
-          <VStack>
+      <Container
+        maxW={{ base: "100%", md: "90%", lg: "90%", "2xl": "60%" }}
+        display="flex"
+        gap={"5"}
+      >
+        <Box width={"30%"} padding="5" textAlign={"left"}>
+          <Stack>
+            <Checkbox>NEW ARRIVALS</Checkbox>
+            <Checkbox defaultChecked as="b">Current Week</Checkbox>
+            <Checkbox>Previouse Weeks</Checkbox>
+            <Checkbox>Essentials</Checkbox>
+            <Checkbox>Tailoring Edit</Checkbox>
+            <Checkbox>Loungewear</Checkbox>
+            <Checkbox>Outdoor & Activewear</Checkbox>
+            <Checkbox>Cold Weather Edit</Checkbox>
+            <Checkbox>The Ski Edit</Checkbox>
+          </Stack>
+          <Divider margin={"2"} color="gray.400" />
+          <Stack>
+            <Checkbox>Accessories</Checkbox>
+            <Checkbox>Bags</Checkbox>
+            <Checkbox>Clothing</Checkbox>
+            <Checkbox>Shoes</Checkbox>
+          </Stack>
+          <Divider margin={"2"} color="gray.400" />
+          <Stack>
             <Text as="b">Designers</Text>
-            <Input />
-            <Text>Acne Studios</Text>
-            <Text>Adidas</Text>
-            <Text>Alexander McQueen</Text>
-            <Text>Ami Paris</Text>
-            <Text>Balenciaga</Text>
-            <Text>Berluti</Text>
-            <Text>Bottegga Veneta</Text>
-            <Text>Brunello Cucinelli</Text>
-            <Text>Burberry</Text>
-            <Text>Celine Eyewear</Text>
-          </VStack>
-          <VStack>
+            <Input placeholder="Search Designers" />
+            <Checkbox>Acne Studios</Checkbox>
+            <Checkbox>Adidas</Checkbox>
+            <Checkbox>Alexander McQueen</Checkbox>
+            <Checkbox>Ami Paris</Checkbox>
+            <Checkbox>Balenciaga</Checkbox>
+            <Checkbox>Berluti</Checkbox>
+            <Checkbox>Bottegga Veneta</Checkbox>
+            <Checkbox>Brunello Cucinelli</Checkbox>
+            <Checkbox>Burberry</Checkbox>
+            <Checkbox>Celine Eyewear</Checkbox>
+          </Stack>
+          <Divider margin={"2"} color="gray.400" />
+          <Stack>
             <Text as="b">Colors</Text>
-            <Text>Beige</Text>
-            <Text>Black</Text>
-            <Text>Blue</Text>
-            <Text>Brown</Text>
-            <Text>Gold</Text>
-            <Text>Green</Text>
-            <Text>Grey</Text>
-            <Text>Multicoloured</Text>
-            <Text>Neutrals</Text>
-          </VStack>
-          <VStack>
+            <Checkbox>Beige</Checkbox>
+            <Checkbox>Black</Checkbox>
+            <Checkbox>Blue</Checkbox>
+            <Checkbox>Brown</Checkbox>
+            <Checkbox>Gold</Checkbox>
+            <Checkbox>Green</Checkbox>
+            <Checkbox>Grey</Checkbox>
+            <Checkbox>Multicoloured</Checkbox>
+            <Checkbox>Neutrals</Checkbox>
+          </Stack>
+          <Divider margin={"2"} color="gray.400" />
+          <Stack>
             <Text as="b">Pattern</Text>
-            <Text>Checked</Text>
-            <Text>Embellished</Text>
-            <Text>Embroidered</Text>
-            <Text>Patterned</Text>
-            <Text>Plain</Text>
-            <Text>Printed</Text>
-            <Text>Striped</Text>
-          </VStack>
+            <Checkbox>Checked</Checkbox>
+            <Checkbox>Embellished</Checkbox>
+            <Checkbox>Embroidered</Checkbox>
+            <Checkbox>Patterned</Checkbox>
+            <Checkbox>Plain</Checkbox>
+            <Checkbox>Printed</Checkbox>
+            <Checkbox>Striped</Checkbox>
+          </Stack>
         </Box>
-        <Grid templateColumns={"repeat(3,1fr)"} gap="5" padding={5}>
+        <Grid templateColumns={"repeat(3,1fr)"} gap="5" rowGap="85" padding={5}>
           {newArrived.map((elem) => {
             return (
               <VStack
@@ -124,7 +144,6 @@ export const NewArrivals = () => {
                 maxW="250px"
                 boxShadow={"md"}
                 paddingBottom="4"
-                
               >
                 <Image src={elem.image} alt={elem.description} />
                 <Text marginTop="2">{elem.brand}</Text>
@@ -136,20 +155,37 @@ export const NewArrivals = () => {
                 >
                   {elem.description}{" "}
                 </Text>
-                <Text as="b"> {elem.price} </Text>
+                <Text as="b"> Price : ₹ {elem.price} </Text>
                 <HStack>
-                  <Button onClick={()=>handleDecrement(elem)} >-</Button>
-                    <Text>{elem.quantity}</Text>
-                  <Button onClick={()=>handleIncrement(elem)} >+</Button>
+                  <Button bg="blue.200" onClick={() => handleDecrement(elem)}>
+                    -
+                  </Button>
+                  <Text>{elem.quantity}</Text>
+                  <Button bg="blue.200" onClick={() => handleIncrement(elem)}>
+                    +
+                  </Button>
                 </HStack>
-                <Button onClick={()=>handleAddToCart(elem)} >Add To Cart</Button>
-                <Button onClick={()=>handleRemoveFromCart(elem)} >Remove From Cart</Button>
-              
+                <Button bg="blue.200" onClick={() => handleAddToCart(elem)}>
+                  Add To Cart
+                </Button>
+                <Button
+                  bg="blue.200"
+                  onClick={() => handleRemoveFromCart(elem)}
+                >
+                  Remove From Cart
+                </Button>
               </VStack>
             );
           })}
         </Grid>
       </Container>
+      <Divider
+        borderColor={"gray.300"}
+        maxW="90%"
+        margin={"auto"}
+        marginBottom="5"
+      />
+      <Pagination setPage={setPage} page={page} />
     </Box>
   );
 };
