@@ -33,6 +33,34 @@ export const clothingData = async (setClothing) => {
   return res;
 };
 
-const addToCart = () =>{
-  
+export const addToCart = async (elem) =>{
+   const res = await axios({
+    method : "post",
+    baseURL : `https://mytheresa-server.onrender.com/cart/`,
+    data : {
+      ...elem
+    }
+   });
+   console.log(res);
+   
+}
+
+export const removeFromCart = async (elem) =>{
+   const res = await axios({
+    method : "delete",
+    url: `https://mytheresa-server.onrender.com/cart/${elem.id}`,
+   });
+   console.log(res);
+   
+}
+
+export const setQuantity= async (elem)=>{
+  const res = await axios({
+    method: 'patch',
+    url: `https://mytheresa-server.onrender.com/newArrivals/${elem.id}`,
+    data:{
+      ...elem
+    }
+  });
+  console.log(res);
 }
