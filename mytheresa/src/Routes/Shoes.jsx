@@ -164,21 +164,34 @@ export const Shoes = () => {
                 >
                   {elem.description}{" "}
                 </Text>
-                <Text as="b"> Price : € {elem.price} </Text>
+                <Text
+                  as="b"
+                  color="red"
+                  textDecoration="line-through"
+                >
+                  Price : €{elem.price}
+                </Text>
+
+                <Text as="b" >
+                  Discount : {elem.discountPercentage}% Off
+                </Text>
+                <Text as="b" >
+                  Price : €{elem.discountedPrice}
+                </Text>
                 <HStack>
-                  <Button bg="blue.200" onClick={() => handleDecrement(elem)}>
+                  <Button size='xs' bg='teal' color='white' onClick={() => handleDecrement(elem)}>
                     -
                   </Button>
                   <Text>{elem.quantity}</Text>
-                  <Button bg="blue.200" onClick={() => handleIncrement(elem)}>
+                  <Button size='xs' bg='teal' color='white' onClick={() => handleIncrement(elem)}>
                     +
                   </Button>
                 </HStack>
-                <Button bg="blue.200" onClick={() => handleAddToCart(elem)}>
+                <Button size='xs' bg='teal' color='white' onClick={() => handleAddToCart(elem)}>
                   Add To Cart
                 </Button>
-                <Button
-                  bg="blue.200"
+                <Button size='xs'
+                  bg='teal' color='white'
                   onClick={() => handleRemoveFromCart(elem)}
                 >
                   Remove From Cart
