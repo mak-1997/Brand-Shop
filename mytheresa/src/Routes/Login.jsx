@@ -9,9 +9,10 @@ import {
   FormLabel,
   FormControl,
   Button,
-  Divider
+  Divider,
 } from "@chakra-ui/react";
 import React from "react";
+import { Navigate,useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 export const Login = () => {
@@ -22,7 +23,10 @@ export const Login = () => {
     userData,
     setUserData,
     userLogin,
+    userAuth
   } = React.useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleUserChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
@@ -35,6 +39,7 @@ export const Login = () => {
   const handleUserSubmit = (event) => {
     event.preventDefault();
     userLogin(userData);
+    navigate('/');
   };
 
   const handleAdminSubmit = (event, adminData) => {
@@ -93,7 +98,6 @@ export const Login = () => {
         </VStack>
 
         {/* Admin Form */}
-       
 
         <VStack
           width={{ base: "100%", md: "70%", lg: "40%" }}

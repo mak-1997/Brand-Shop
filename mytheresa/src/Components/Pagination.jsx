@@ -1,14 +1,10 @@
 import React from "react";
 import { Box, HStack, Text, Button } from "@chakra-ui/react";
 
-export const Pagination = ({page, setPage}) => {
-
-
+export const Pagination = ({ page, setPage }) => {
   const handleClick = (val) => {
     setPage(page + val);
   };
-
-
 
   return (
     <Box>
