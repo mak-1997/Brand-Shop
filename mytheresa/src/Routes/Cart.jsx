@@ -13,8 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 export const Cart = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [cart, setCart] = React.useState([]);
   const [total, setTotal] = React.useState(0);
 
@@ -103,7 +102,14 @@ export const Cart = () => {
       </Container>
 
       <br />
-      <Button bg="black" color="white" onClick={()=>{alert('Your order has been placed. Thank you for shopping with us!!'); navigate('/')}} >
+      <Button
+        bg="black"
+        color="white"
+        onClick={() => {
+          alert("Your order has been placed. Thank you for shopping with us!!");
+          navigate("/");
+        }}
+      >
         Proceed to payment
       </Button>
     </Box>

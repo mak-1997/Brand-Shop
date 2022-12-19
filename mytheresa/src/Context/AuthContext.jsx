@@ -1,18 +1,17 @@
 import React from "react";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = React.createContext();
 
 export const AuthContextProvider = ({ children }) => {
-
   const navigate = useNavigate();
-  const navigateToAdmin = ()=>{
-    navigate('/admin')
-  }
+  const navigateToAdmin = () => {
+    navigate("/admin");
+  };
 
-  const[adminAuth, setAdminAuth] = React.useState(false);
-  const[userAuth, setUserAuth] = React.useState(false);
+  const [adminAuth, setAdminAuth] = React.useState(false);
+  const [userAuth, setUserAuth] = React.useState(false);
   const [totalItems, setTotalItems] = React.useState(0);
 
   const initState = {
@@ -34,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
         },
       });
       setUserAuth(true);
-      
+
       console.log(res);
       return res;
     } catch (error) {
@@ -71,8 +70,10 @@ export const AuthContextProvider = ({ children }) => {
         adminLogin,
         adminAuth,
         userAuth,
+        setUserAuth,
+        setAdminAuth,
         totalItems,
-        setTotalItems
+        setTotalItems,
       }}
     >
       {children}

@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from "./Login";
 import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage";
-import { PrivateRoute } from "./PrivateRoute";
-import {NewArrivals} from './NewArrivals';
-import {Shoes} from './Shoes';
-import {Clothing} from './Clothing';
-import {Cart} from './Cart';
+import { PrivateRoute , PrivateUserRoute} from "./PrivateRoute";
+import { NewArrivals } from "./NewArrivals";
+import { Shoes } from "./Shoes";
+import { Clothing } from "./Clothing";
+import { Cart } from "./Cart";
 
 export const AllRoutes = () => {
   return (
@@ -22,10 +22,38 @@ export const AllRoutes = () => {
             </PrivateRoute>
           }
         />
-        <Route path='/newArrivals' element={<NewArrivals />} />
-        <Route path='/shoes' element={<Shoes />} />
-        <Route path='/clothing' element={<Clothing />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route
+          path="/newArrivals"
+          element={
+            <PrivateUserRoute>
+              <NewArrivals />
+            </PrivateUserRoute>
+          }
+        />
+        <Route
+          path="/shoes"
+          element={
+            <PrivateUserRoute>
+              <Shoes />
+            </PrivateUserRoute>
+          }
+        />
+        <Route
+          path="/clothing"
+          element={
+            <PrivateUserRoute>
+              <Clothing />
+            </PrivateUserRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateUserRoute>
+              <Cart />
+            </PrivateUserRoute>
+          }
+        />
       </Routes>
     </div>
   );

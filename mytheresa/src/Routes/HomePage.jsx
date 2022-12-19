@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom";
 import {
   Container,
   Image,
   Box,
   Text,
-  Grid,
   Center,
   HStack,
   Button,
   Divider,
 } from "@chakra-ui/react";
-import axios from "axios";
+
 import React from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { newArrivalsData, shoesData, clothingData } from "./api";
@@ -60,7 +58,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <Box>
+    <Box marginTop={"5"}>
       <Container maxWidth={"90%"} marginBottom="5">
         <Center>
           <Image
@@ -121,7 +119,7 @@ export const HomePage = () => {
       </Button>
 
       <Container
-        maxWidth={"90%"}
+        maxWidth={{ lg: "90%", "2xl": "60%" }}
         marginBottom="5"
         display={"flex"}
         marginTop="5"
@@ -195,7 +193,7 @@ export const HomePage = () => {
       </Button>
 
       <Container
-        maxWidth={"90%"}
+        maxWidth={{ lg: "90%", "2xl": "60%" }}
         marginBottom="5"
         display={"flex"}
         marginTop="5"

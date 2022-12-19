@@ -24,8 +24,7 @@ import {
 import { getCartItems } from "../Routes/api";
 
 export const Navbar = () => {
-
-  const {totalItems, setTotalItems} = React.useContext(AuthContext);
+  const { totalItems, setTotalItems,userAuth,adminAuth,setUserAuth,setAdminAuth} = React.useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -67,9 +66,9 @@ export const Navbar = () => {
               fontSize={"12"}
               as="b"
               color={"gray"}
-              onClick={()=>navigate('/login')}
+              onClick={() =>{userAuth ? setUserAuth(false) :  navigate("/login")}}
             >
-              My account
+              {userAuth ? "Logout" : "Login"}
             </Text>
             <Text
               onMouseEnter={changeColor}
@@ -110,7 +109,7 @@ export const Navbar = () => {
             justifyContent="end"
             alignItems={"center"}
             gap="5"
-            onClick={()=> navigate('/cart')}
+            onClick={() => navigate("/cart")}
           >
             <Text as="b"> Total Items : {totalItems}</Text>
             <BsHandbag size={"25"} />
@@ -129,7 +128,7 @@ export const Navbar = () => {
             <Text color={"tomato"}>SALE</Text>
           </HStack>
           <Box>
-            <InputGroup size={"sm"}  >
+            <InputGroup size={"sm"}>
               <Input placeholder="Search for..." />
               <InputRightElement children={<HiSearch />} />
             </InputGroup>

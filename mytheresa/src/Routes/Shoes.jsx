@@ -14,17 +14,20 @@ import {
   Stack,
   Checkbox,
 } from "@chakra-ui/react";
-import { shoesData, addToCart, removeFromCart, setQuantityOfShoes } from "./api";
+import {
+  shoesData,
+  addToCart,
+  removeFromCart,
+  setQuantityOfShoes,
+} from "./api";
 import { Pagination } from "../Components/Pagination";
-import {AuthContext} from '../Context/AuthContext';
+import { AuthContext } from "../Context/AuthContext";
 export const Shoes = () => {
-
-  const {totalItems, setTotalItems} = React.useContext(AuthContext);
+  const { totalItems, setTotalItems } = React.useContext(AuthContext);
   const [shoes, setShoes] = React.useState([]);
   const [page, setPage] = React.useState(1);
-  const [sortPara,setSortPara] = React.useState('discountPercentage');
-  const [orderPara, setOrderPara] = React.useState('asc');
-
+  const [sortPara, setSortPara] = React.useState("discountPercentage");
+  const [orderPara, setOrderPara] = React.useState("asc");
 
   const handleAddToCart = async (elem) => {
     elem.quantity = elem.quantity === 0 ? 1 : elem.quantity;
@@ -55,25 +58,36 @@ export const Shoes = () => {
   };
 
   React.useEffect(() => {
-    shoesData(setShoes, page,sortPara,orderPara);
-  }, [page, totalItems,sortPara,orderPara]);
+    shoesData(setShoes, page, sortPara, orderPara);
+  }, [page, totalItems, sortPara, orderPara]);
   return (
-    <Box justifyContent={"center"}  >
-      <Box display='flex' maxW='90%' margin='auto' justifyContent={'right'} >
+    <Box justifyContent={"center"}>
+      <Box display="flex" maxW="90%" margin="auto" justifyContent={"right"}>
+        <Text as="b" alignSelf={"center"}>
+          Sort By :
+        </Text>
+        <Select
+          maxW={"200"}
+          margin="3"
+          onChange={(event) => setSortPara(event.target.value)}
+        >
+          <option value="discountPercentage">Discount Available</option>
+          <option value="discountedPrice">Price</option>
+          <option value="brand">Brand</option>
+        </Select>
 
-      <Text as='b' alignSelf={'center'} >Sort By :</Text>
-      <Select maxW={'200'}  margin='3' onChange={(event)=> setSortPara(event.target.value)} >
-        <option value="discountPercentage">Discount Available</option>
-        <option value="discountedPrice">Price</option>
-        <option value="brand">Brand</option>
-      </Select>
-
-        <Text as='b' alignSelf={'center'} >Select Order :</Text>
-      <Select maxW={'200'}  margin='3' onChange={(event)=> setOrderPara(event.target.value)} >
-        <option value="asc">low to high</option>
-        <option value="desc">high to low</option>
-      </Select>
-      <Pagination setPage={setPage} page={page} />
+        <Text as="b" alignSelf={"center"}>
+          Select Order :
+        </Text>
+        <Select
+          maxW={"200"}
+          margin="3"
+          onChange={(event) => setOrderPara(event.target.value)}
+        >
+          <option value="asc">low to high</option>
+          <option value="desc">high to low</option>
+        </Select>
+        <Pagination setPage={setPage} page={page} />
       </Box>
       <Divider
         borderColor={"gray.300"}
@@ -89,7 +103,9 @@ export const Shoes = () => {
         <Box width={"30%"} padding="5" textAlign={"left"}>
           <Stack>
             <Checkbox>NEW ARRIVALS</Checkbox>
-            <Checkbox defaultChecked as="b">Current Week</Checkbox>
+            <Checkbox defaultChecked as="b">
+              Current Week
+            </Checkbox>
             <Checkbox>Previouse Weeks</Checkbox>
             <Checkbox>Essentials</Checkbox>
             <Checkbox>Tailoring Edit</Checkbox>
@@ -164,34 +180,43 @@ export const Shoes = () => {
                 >
                   {elem.description}{" "}
                 </Text>
-                <Text
-                  as="b"
-                  color="red"
-                  textDecoration="line-through"
-                >
+                <Text as="b" color="red" textDecoration="line-through">
                   Price : €{elem.price}
                 </Text>
 
-                <Text as="b" >
-                  Discount : {elem.discountPercentage}% Off
-                </Text>
-                <Text as="b" >
-                  Price : €{elem.discountedPrice}
-                </Text>
+                <Text as="b">Discount : {elem.discountPercentage}% Off</Text>
+                <Text as="b">Price : €{elem.discountedPrice}</Text>
                 <HStack>
-                  <Button size='xs' bg='teal' color='white' onClick={() => handleDecrement(elem)}>
+                  <Button
+                    size="xs"
+                    bg="teal"
+                    color="white"
+                    onClick={() => handleDecrement(elem)}
+                  >
                     -
                   </Button>
                   <Text>{elem.quantity}</Text>
-                  <Button size='xs' bg='teal' color='white' onClick={() => handleIncrement(elem)}>
+                  <Button
+                    size="xs"
+                    bg="teal"
+                    color="white"
+                    onClick={() => handleIncrement(elem)}
+                  >
                     +
                   </Button>
                 </HStack>
-                <Button size='xs' bg='teal' color='white' onClick={() => handleAddToCart(elem)}>
+                <Button
+                  size="xs"
+                  bg="teal"
+                  color="white"
+                  onClick={() => handleAddToCart(elem)}
+                >
                   Add To Cart
                 </Button>
-                <Button size='xs'
-                  bg='teal' color='white'
+                <Button
+                  size="xs"
+                  bg="teal"
+                  color="white"
                   onClick={() => handleRemoveFromCart(elem)}
                 >
                   Remove From Cart
