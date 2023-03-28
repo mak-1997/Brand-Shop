@@ -70,11 +70,6 @@ On admin login, you will be redirected to the admin page and over there you can 
 Here users can browse, `sort` the product based on `brand, price and discound` and add items to the cart by clicking on the `Add to Cart` button.
  
  ![Products](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/products.png)
-### Order Summary Page -
-
-On this page, you can see your order details. you can `remove` the item from cart and also, `increase` or `decrease` count. By clicking on the payment button you will be redirect to the checkout page.
-
-![order summary](https://i.postimg.cc/8C7pyYyN/Screenshot-2023-02-12-214326.png)
 
 ### Cart Page -
 
