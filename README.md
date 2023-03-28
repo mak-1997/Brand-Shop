@@ -2,7 +2,7 @@
 
 Brand Shop- The finest edit in luxury fashion.
 
-![alt text](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/projectLogo.png)
+![Brand Shop](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/projectLogo.png)
 
 
 <h3 align="center">It's a Full Stack E-commerce web application with all the major functionalities</h3>
@@ -50,26 +50,26 @@ Mytheresa is the finest edit in luxury fashion for women, men and kids. We have 
 
 This is the main landing page of our website. Here, if you clicked on New Arrivals/ Clothing/ Shoes you will be redirected to that page if you are already logged in else you will be redirected to the login page.
 
-![landing_page](https://i.postimg.cc/mDVyddxf/Screenshot-2023-02-12-212736.png)
+![landing page](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/homepage1.png)
+![landing page](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/homepage2.png)
 
 ### Sign in Page -
 
 On this page, we have used reqres api for login so you can use any email provided over there for login. There is Admin login too.  
 
-![Login](https://i.postimg.cc/MzhpTPNJ/Screenshot-2023-02-12-213439.png)
+![Login](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/login.png)
 
 ###  Admin Page - 
 
 On admin login, you will be redirected to the admin page and over there you can add new products to the database. 
 
-![Admin](https://i.postimg.cc/SKXfdyCd/Screenshot-2023-02-12-213844.png)
+![Admin](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/admin.png)
 
 ### New Arrivals/ Clothing/ Shoes Page -
 
 Here users can browse, `sort` the product based on `brand, price and discound` and add items to the cart by clicking on the `Add to Cart` button.
  
- ![product](https://i.postimg.cc/jS64k8Fw/Screenshot-2023-02-12-214113.png)
-
+ ![Products](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/products.png)
 ### Order Summary Page -
 
 On this page, you can see your order details. you can `remove` the item from cart and also, `increase` or `decrease` count. By clicking on the payment button you will be redirect to the checkout page.
@@ -80,7 +80,7 @@ On this page, you can see your order details. you can `remove` the item from car
 
 Here all the products added to the cart will be shown. On this page, By Clicking on add to cart your cart added successfully.
 
-![cart](https://i.postimg.cc/5ykdFBzp/Screenshot-2023-02-12-214846.png)
+![cart](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/cart.png)
 
 
 
@@ -88,7 +88,7 @@ Here all the products added to the cart will be shown. On this page, By Clicking
 
 On This Page there is info about the site....
 
-![footer](https://i.postimg.cc/HsgdX2Fv/Screenshot-2023-02-12-215033.png)
+![footer](https://github.com/mak-1997/fragile-hot-3247/raw/main/mytheresa/public/footer.png)
 
 
 ## Run Locally
