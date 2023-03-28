@@ -28,7 +28,7 @@ Brand Shop- The finest edit in luxury fashion.
 
 <h3 align="center"><a href="https://candid-crumble-7b020e.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
-Mytheresa is the finest edit in luxury fashion for women, men and kids. We have over 200 of the best international designers, 600 new arrivals each week, fast and reliable delivery, excellent customer service, utmost security and data protection, and free returns and exchanges within 30 days.
+Brand Shop is the finest edit in luxury fashion for women, men and kids. We have over 200 of the best international designers, 600 new arrivals each week, fast and reliable delivery, excellent customer service, utmost security and data protection, and free returns and exchanges within 30 days.
 
 <br/>
 
