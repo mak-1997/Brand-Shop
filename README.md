@@ -23,7 +23,7 @@ Brand Shop- The finest edit in luxury fashion.
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=netlify&logoColor=white" alt="netlify" />
+  <img src="https://img.shields.io/badge/netlify-000000?style=for-the-badge&logo=netlify&logoColor=white" alt="netlify" />
 </p>
 
 <h3 align="center"><a href="https://candid-crumble-7b020e.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
