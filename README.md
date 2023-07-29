@@ -23,10 +23,10 @@ Brand Shop- The finest edit in luxury fashion.
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/netlify-000000?style=for-the-badge&logo=netlify&logoColor=white" alt="netlify" />
+  <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="netlify" />
 </p>
 
-<h3 align="center"><a href="https://candid-crumble-7b020e.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://mytheresa.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 Brand Shop is the clone of mytheresa.com which is the finest edit in luxury fashion for women, men and kids.
 
@@ -115,9 +115,9 @@ Start the localhost server
 
 ## Deployed link
 
-### Netlify Link
+### Vercel Link
 
-[https://candid-crumble-7b020e.netlify.app/](https://candid-crumble-7b020e.netlify.app/)
+[https://mytheresa.vercel.app/](https://mytheresa.vercel.app/)
 
 ## Show your support
 
